@@ -4,16 +4,18 @@ set -e
 
 sed -i \
     "s/ZOOKEEPER/${ZOOKEEPER}/g" /etc/hadoop/conf/core-site.xml
+sed -i \
+    "s/NAMENODE/${NAMENODE}/g" /etc/hadoop/conf/core-site.xml
 
 mkdir -p /data/dn/
 chown hdfs:hadoop -R /data/dn
 
-mkdir -p /data/lib/hadoop-hdfs/cache/hdfs/dfs/name
-chown hdfs:hadoop -R /data/lib/hadoop-hdfs
+mkdir -p /data/nn
+chown hdfs:hadoop -R /data/nn
 
 echo -e "\n---------------------------------------"
 
-if [[ ! -e /data/lib/hadoop-hdfs/cache/hdfs/dfs/name/current ]]; then
+if [[ ! -e /data/nn/current ]]; then
     	echo -e	"Initiating HDFS NameNode..."
 	/etc/init.d/hadoop-hdfs-namenode init
 	rc=$?
@@ -23,6 +25,8 @@ if [[ ! -e /data/lib/hadoop-hdfs/cache/hdfs/dfs/name/current ]]; then
         	echo -e	"HDFS successfully initiaded!"
     	fi
 fi
+
+/wait-for-it.sh ${ZOOKEEPER}:2181 -t 120
 
 echo -e	"Starting NameNode..."
 supervisorctl start hdfs-namenode

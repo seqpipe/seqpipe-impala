@@ -5,7 +5,7 @@ USER root
 ENV CDH_VERSION 6.3.0
 
 RUN apt-get update --fix-missing && \ 
-	apt-get install -y wget gnupg2 supervisor
+	apt-get install -y wget gnupg2 supervisor less vim inetutils-ping
 
 
 RUN echo \

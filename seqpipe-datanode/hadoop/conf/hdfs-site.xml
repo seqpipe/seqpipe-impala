@@ -1,8 +1,8 @@
 <configuration>
-    <property>
-            <name>dfs.namenode.name.dir</name>
-            <value>/data/nn</value>
-    </property>
+        <property>
+                <name>dfs.namenode.name.dir</name>
+                <value>/data/nn</value>
+        </property>
 
 	<property>
 		<name>dfs.client.read.shortcircuit</name>
@@ -10,7 +10,7 @@
 	</property>
 	<property>
 		<name>dfs.domain.socket.path</name>
-		<value>/data/run/hdfs-sockets/dn</value>
+		<value>/var/run/hdfs-sockets/dn</value>
 	</property>
 	<property>
 		<name>dfs.replication</name>

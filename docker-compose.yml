@@ -2,6 +2,8 @@ version: '3.7'
 services:
 
   zookeeper:
+    build:
+      context: ./seqpipe-zookeeper
     image: seqpipe/seqpipe-zookeeper:latest
     ports:
       - "2181:2181"
@@ -9,6 +11,8 @@ services:
       - "impala_data:/data"
   
   namenode:
+    build:
+      context: ./seqpipe-namenode
     image: seqpipe/seqpipe-namenode:latest
     ports:
       - "8020:8020"
@@ -16,7 +20,22 @@ services:
     volumes:
       - "impala_data:/data"
     environment:
-      - ZOOKEEPER=dory.local
+      - ZOOKEEPER=10.0.1.1
+      - NAMENODE=10.0.1.1
+
+  datanode:
+    build:
+      context: ./seqpipe-datanode
+    image: seqpipe/seqpipe-datanode:latest
+    ports:
+      - "50075:50075"
+      - "50010:50010"
+      - "50020:50020"      
+    volumes:
+      - "impala_data:/data"
+    environment:
+      - ZOOKEEPER=10.0.1.1
+      - NAMENODE=10.0.1.1
 
 volumes:
   impala_data:
