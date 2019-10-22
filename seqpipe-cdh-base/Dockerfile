@@ -6,7 +6,7 @@ ENV CDH_VERSION 6.3.1
 
 RUN apt-get update --fix-missing && \ 
 	apt-get install -y wget gnupg2 supervisor less vim \
-    inetutils-ping telnet
+    inetutils-ping telnet net-tools
 
 
 RUN echo \

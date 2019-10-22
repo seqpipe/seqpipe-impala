@@ -28,7 +28,7 @@
 
 	<property>
 		<name>dfs.block.local-path-access.user</name>
-		<value>impala</value>
+		<value>hdfs</value>
 	</property>
 
 	<property>
@@ -47,4 +47,9 @@
 		<name>dfs.permissions</name>
 		<value>false</value>
 	</property>
+	<property>
+		<name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+		<value>false</value>
+	</property>
+    
 </configuration>

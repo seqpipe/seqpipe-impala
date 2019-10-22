@@ -12,7 +12,6 @@ RUN chown hdfs.hadoop /data/dn
 
 ADD ./hadoop/conf/core-site.xml /etc/hadoop/conf/
 ADD ./hadoop/conf/hdfs-site.xml /etc/hadoop/conf/
-ADD ./hadoop/conf/log4j.properties /etc/hadoop/conf/
 
 ADD ./supervisor/supervisord.conf /etc/
 
