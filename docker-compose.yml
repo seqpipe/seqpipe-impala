@@ -8,7 +8,9 @@ services:
     ports:
       - "2181:2181"
     volumes:
-      - "impala_data:/data"
+      - type: bind
+        source: ./impala_data
+        target: /data
   
   namenode:
     build:
@@ -18,7 +20,9 @@ services:
       - "8020:8020"
       - "9870:9870"
     volumes:
-      - "impala_data:/data"
+      - type: bind
+        source: ./impala_data
+        target: /data
     environment:
       - ZOOKEEPER=10.0.1.1
       - NAMENODE=10.0.1.1
@@ -32,10 +36,9 @@ services:
       - "50010:50010"
       - "50020:50020"      
     volumes:
-      - "impala_data:/data"
+      - type: bind
+        source: ./impala_data
+        target: /data
     environment:
       - ZOOKEEPER=10.0.1.1
       - NAMENODE=10.0.1.1
-
-volumes:
-  impala_data:
