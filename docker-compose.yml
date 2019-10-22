@@ -42,3 +42,18 @@ services:
     environment:
       - ZOOKEEPER=10.0.1.1
       - NAMENODE=10.0.1.1
+
+  hive_metastore:
+    build:
+      context: ./seqpipe-hive-metastore
+    image: seqpipe/seqpipe-hive-metastore:latest
+    ports:
+      - "9083:9083"
+
+    volumes:
+      - type: bind
+        source: ./impala_data
+        target: /data
+    environment:
+      - ZOOKEEPER=10.0.1.1
+      - NAMENODE=10.0.1.1
