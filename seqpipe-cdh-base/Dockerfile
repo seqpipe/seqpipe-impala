@@ -2,10 +2,11 @@ FROM amd64/ubuntu:18.04
 
 USER root
 
-ENV CDH_VERSION 6.3.0
+ENV CDH_VERSION 6.3.1
 
 RUN apt-get update --fix-missing && \ 
-	apt-get install -y wget gnupg2 supervisor less vim inetutils-ping
+	apt-get install -y wget gnupg2 supervisor less vim \
+    inetutils-ping telnet
 
 
 RUN echo \

@@ -1,0 +1,120 @@
+2019-10-22 08:48:00,126 INFO org.apache.hadoop.hdfs.DFSUtil: Starting Web-server for hdfs at: http://0.0.0.0:9870
+2019-10-22 08:48:08,843 WARN org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Only one image storage directory (dfs.namenode.name.dir) configured. Beware of data loss due to lack of redundant storage directories!
+2019-10-22 08:48:08,843 WARN org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Only one namespace edits storage directory (dfs.namenode.edits.dir) configured. Beware of data loss due to lack of redundant storage directories!
+2019-10-22 08:48:08,903 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Edit logging is async:true
+2019-10-22 08:48:08,920 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: KeyProvider: null
+2019-10-22 08:48:08,921 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: fsLock is fair: true
+2019-10-22 08:48:08,922 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Detailed lock hold time metrics enabled: false
+2019-10-22 08:48:08,969 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: fsOwner             = hdfs (auth:SIMPLE)
+2019-10-22 08:48:08,969 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: supergroup          = supergroup
+2019-10-22 08:48:08,969 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: isPermissionEnabled = false
+2019-10-22 08:48:08,969 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: HA Enabled: false
+2019-10-22 08:48:09,015 INFO org.apache.hadoop.hdfs.server.common.Util: dfs.datanode.fileio.profiling.sampling.percentage set to 0. Disabling file IO profiling
+2019-10-22 08:48:09,088 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager: dfs.block.invalidate.limit: configured=1000, counted=60, effected=1000
+2019-10-22 08:48:09,088 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager: dfs.namenode.datanode.registration.ip-hostname-check=true
+2019-10-22 08:48:09,458 INFO org.apache.hadoop.hdfs.server.namenode.snapshot.SnapshotManager: Loaded config captureOpenFiles: true, skipCaptureAccessTimeOnlyChange: false, snapshotDiffAllowSnapRootDescendant: true
+2019-10-22 08:48:09,500 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Retry cache on namenode is enabled
+2019-10-22 08:48:09,501 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Retry cache will use 0.03 of total heap and retry cache entry expiry time is 600000 millis
+2019-10-22 08:48:09,534 INFO org.apache.hadoop.hdfs.server.common.Storage: Lock on /data/nn/in_use.lock acquired by nodename 209@823c237216fd
+2019-10-22 08:48:09,559 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Recovering unfinalized segments in /data/nn/current
+2019-10-22 08:48:09,560 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: No edit log streams selected.
+2019-10-22 08:48:09,560 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Planning to load image: FSImageFile(file=/data/nn/current/fsimage_0000000000000000000, cpktTxId=0000000000000000000)
+2019-10-22 08:48:09,647 INFO org.apache.hadoop.hdfs.server.namenode.FSImageFormatPBINode: Loading 1 INodes.
+2019-10-22 08:48:09,683 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Loaded image for txid 0 from /data/nn/current/fsimage_0000000000000000000
+2019-10-22 08:48:09,689 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Need to save fs image? false (staleImage=false, haEnabled=false, isRollingUpgrade=false)
+2019-10-22 08:48:09,690 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 1
+2019-10-22 08:48:09,808 INFO org.apache.hadoop.hdfs.server.namenode.NameCache: initialized with 0 entries 0 lookups
+2019-10-22 08:48:09,808 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Finished loading FSImage in 295 msecs
+2019-10-22 08:48:18,041 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Stopping services started for active state
+2019-10-22 08:48:18,041 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 1, 1
+2019-10-22 08:48:18,057 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 2 Total time for transactions(ms): 2 Number of transactions batched in Syncs: 0 Number of syncs: 3 SyncTimes(ms): 24 
+2019-10-22 08:48:18,059 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /data/nn/current/edits_inprogress_0000000000000000001 -> /data/nn/current/edits_0000000000000000001-0000000000000000002
+2019-10-22 08:48:18,084 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: FSEditLogAsync was interrupted, exiting
+2019-10-22 08:48:18,275 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Stopping services started for active state
+2019-10-22 08:48:18,276 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Stopping services started for standby state
+2019-10-22 08:49:49,966 DEBUG org.apache.commons.configuration2.io.FileLocatorUtils: Loading configuration from the context classpath (hadoop-metrics2.properties)
+2019-10-22 08:49:50,278 DEBUG org.apache.htrace.core.Tracer: sampler.classes = ; loaded no samplers
+2019-10-22 08:49:50,280 TRACE org.apache.htrace.core.TracerId: ProcessID(fmt=%{tname}/%{ip}): computed process ID of "NameNode/192.168.48.3"
+2019-10-22 08:49:50,281 TRACE org.apache.htrace.core.TracerPool: TracerPool(Global): adding tracer Tracer(NameNode/192.168.48.3)
+2019-10-22 08:49:50,281 DEBUG org.apache.htrace.core.Tracer: span.receiver.classes = ; loaded no span receivers
+2019-10-22 08:49:50,282 TRACE org.apache.htrace.core.Tracer: Created Tracer(NameNode/192.168.48.3) for NameNode
+2019-10-22 08:49:50,288 TRACE org.apache.hadoop.hdfs.DFSUtil: addressKey: dfs.namenode.rpc-address nsId: null nnId: null
+2019-10-22 08:49:50,290 TRACE org.apache.hadoop.hdfs.DFSUtil: addressKey: dfs.namenode.rpc-address nsId: null nnId: null
+2019-10-22 08:50:14,533 INFO org.apache.hadoop.hdfs.DFSUtil: Starting Web-server for hdfs at: http://0.0.0.0:9870
+2019-10-22 08:50:23,210 WARN org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Only one image storage directory (dfs.namenode.name.dir) configured. Beware of data loss due to lack of redundant storage directories!
+2019-10-22 08:50:23,210 WARN org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Only one namespace edits storage directory (dfs.namenode.edits.dir) configured. Beware of data loss due to lack of redundant storage directories!
+2019-10-22 08:50:23,267 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Edit logging is async:true
+2019-10-22 08:50:23,284 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: KeyProvider: null
+2019-10-22 08:50:23,285 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: fsLock is fair: true
+2019-10-22 08:50:23,286 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Detailed lock hold time metrics enabled: false
+2019-10-22 08:50:23,331 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: fsOwner             = hdfs (auth:SIMPLE)
+2019-10-22 08:50:23,331 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: supergroup          = supergroup
+2019-10-22 08:50:23,331 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: isPermissionEnabled = false
+2019-10-22 08:50:23,331 TRACE org.apache.hadoop.hdfs.DFSUtil: addressKey: dfs.namenode.rpc-address nsId: null nnId: null
+2019-10-22 08:50:23,332 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: HA Enabled: false
+2019-10-22 08:50:23,359 DEBUG org.apache.hadoop.hdfs.util.LightWeightHashSet: initial capacity=16, max load factor= 0.75, min load factor= 0.2
+2019-10-22 08:50:23,360 DEBUG org.apache.hadoop.hdfs.util.LightWeightHashSet: initial capacity=16, max load factor= 0.75, min load factor= 0.2
+2019-10-22 08:50:23,360 DEBUG org.apache.hadoop.hdfs.util.LightWeightHashSet: initial capacity=16, max load factor= 0.75, min load factor= 0.2
+2019-10-22 08:50:23,360 DEBUG org.apache.hadoop.hdfs.util.LightWeightHashSet: initial capacity=16, max load factor= 0.75, min load factor= 0.2
+2019-10-22 08:50:23,360 DEBUG org.apache.hadoop.hdfs.util.LightWeightHashSet: initial capacity=16, max load factor= 0.75, min load factor= 0.2
+2019-10-22 08:50:23,380 INFO org.apache.hadoop.hdfs.server.common.Util: dfs.datanode.fileio.profiling.sampling.percentage set to 0. Disabling file IO profiling
+2019-10-22 08:50:23,434 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager: dfs.block.invalidate.limit: configured=1000, counted=60, effected=1000
+2019-10-22 08:50:23,434 INFO org.apache.hadoop.hdfs.server.blockmanagement.DatanodeManager: dfs.namenode.datanode.registration.ip-hostname-check=true
+2019-10-22 08:50:23,651 DEBUG org.apache.hadoop.hdfs.util.LightWeightHashSet: initial capacity=16, max load factor= 0.75, min load factor= 0.2
+2019-10-22 08:50:23,797 INFO org.apache.hadoop.hdfs.server.namenode.snapshot.SnapshotManager: Loaded config captureOpenFiles: true, skipCaptureAccessTimeOnlyChange: false, snapshotDiffAllowSnapRootDescendant: true
+2019-10-22 08:50:23,839 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Retry cache on namenode is enabled
+2019-10-22 08:50:23,839 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Retry cache will use 0.03 of total heap and retry cache entry expiry time is 600000 millis
+2019-10-22 08:50:23,882 INFO org.apache.hadoop.hdfs.server.common.Storage: Lock on /data/nn/in_use.lock acquired by nodename 630@823c237216fd
+2019-10-22 08:50:23,893 TRACE org.apache.hadoop.hdfs.server.namenode.FSImage: Data dir states:
+  Storage Directory /data/nn: NORMAL
+2019-10-22 08:50:23,895 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImageTransactionalStorageInspector: Checking file /data/nn/current/seen_txid
+2019-10-22 08:50:23,895 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImageTransactionalStorageInspector: Checking file /data/nn/current/fsimage_0000000000000000000.md5
+2019-10-22 08:50:23,895 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImageTransactionalStorageInspector: Checking file /data/nn/current/VERSION
+2019-10-22 08:50:23,895 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImageTransactionalStorageInspector: Checking file /data/nn/current/fsimage_0000000000000000000
+2019-10-22 08:50:23,896 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImageTransactionalStorageInspector: Checking file /data/nn/current/edits_0000000000000000001-0000000000000000002
+2019-10-22 08:50:23,896 TRACE org.apache.hadoop.hdfs.DFSUtil: addressKey: dfs.namenode.rpc-address nsId: null nnId: null
+2019-10-22 08:50:23,909 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Recovering unfinalized segments in /data/nn/current
+2019-10-22 08:50:23,910 DEBUG org.apache.hadoop.hdfs.server.namenode.FileJournalManager: FileJournalManager(root=/data/nn): selecting input streams starting at 1 (excluding inProgress) from among 1 candidate file(s)
+2019-10-22 08:50:23,914 DEBUG org.apache.hadoop.hdfs.server.namenode.FileJournalManager: selecting edit log stream EditLogFile(file=/data/nn/current/edits_0000000000000000001-0000000000000000002,first=0000000000000000001,last=0000000000000000002,inProgress=false,hasCorruptHeader=false)
+2019-10-22 08:50:23,917 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImage: Planning to load edit log stream: org.apache.hadoop.hdfs.server.namenode.RedundantEditLogInputStream@3cc20577
+2019-10-22 08:50:23,917 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Planning to load image: FSImageFile(file=/data/nn/current/fsimage_0000000000000000000, cpktTxId=0000000000000000000)
+2019-10-22 08:50:23,999 INFO org.apache.hadoop.hdfs.server.namenode.FSImageFormatPBINode: Loading 1 INodes.
+2019-10-22 08:50:24,032 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Loaded image for txid 0 from /data/nn/current/fsimage_0000000000000000000
+2019-10-22 08:50:24,032 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImage: About to load edits:
+  org.apache.hadoop.hdfs.server.namenode.RedundantEditLogInputStream@3cc20577
+2019-10-22 08:50:24,037 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Reading org.apache.hadoop.hdfs.server.namenode.RedundantEditLogInputStream@3cc20577 expecting start txid #1
+2019-10-22 08:50:24,037 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Start loading edits file /data/nn/current/edits_0000000000000000001-0000000000000000002 maxTxnsToRead = 9223372036854775807
+2019-10-22 08:50:24,040 TRACE org.apache.hadoop.hdfs.server.namenode.FSEditLogLoader: Acquiring write lock to replay edit log
+2019-10-22 08:50:24,042 INFO org.apache.hadoop.hdfs.server.namenode.RedundantEditLogInputStream: Fast-forwarding stream '/data/nn/current/edits_0000000000000000001-0000000000000000002' to transaction ID 1
+2019-10-22 08:50:24,061 TRACE org.apache.hadoop.hdfs.server.namenode.FSEditLogLoader: op=LogSegmentOp [opCode=OP_START_LOG_SEGMENT, txid=1], startOpt=REGULAR, numEdits=0, totalEdits=0
+2019-10-22 08:50:24,061 TRACE org.apache.hadoop.hdfs.server.namenode.FSEditLogLoader: replaying edit log: LogSegmentOp [opCode=OP_START_LOG_SEGMENT, txid=1]
+2019-10-22 08:50:24,062 TRACE org.apache.hadoop.hdfs.server.namenode.FSEditLogLoader: op=LogSegmentOp [opCode=OP_END_LOG_SEGMENT, txid=2], startOpt=REGULAR, numEdits=1, totalEdits=1
+2019-10-22 08:50:24,063 TRACE org.apache.hadoop.hdfs.server.namenode.FSEditLogLoader: replaying edit log: LogSegmentOp [opCode=OP_END_LOG_SEGMENT, txid=2]
+2019-10-22 08:50:24,063 TRACE org.apache.hadoop.hdfs.server.namenode.FSEditLogLoader: replaying edit log finished
+2019-10-22 08:50:24,063 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImage: Summary of operations loaded from edit log:
+  OP_END_LOG_SEGMENT=1
+  OP_START_LOG_SEGMENT=1
+2019-10-22 08:50:24,063 DEBUG org.apache.hadoop.hdfs.server.namenode.FSImage: maxTxnsToRead = 9223372036854775807 actual edits read = 2
+2019-10-22 08:50:24,064 INFO org.apache.hadoop.hdfs.server.namenode.FSImage: Edits file /data/nn/current/edits_0000000000000000001-0000000000000000002 of size 42 edits # 2 loaded in 0 seconds
+2019-10-22 08:50:24,064 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Need to save fs image? false (staleImage=false, haEnabled=false, isRollingUpgrade=false)
+2019-10-22 08:50:24,065 DEBUG org.apache.hadoop.hdfs.server.namenode.FileJournalManager: FileJournalManager(root=/data/nn): selecting input streams starting at 3 (inProgress ok) from among 1 candidate file(s)
+2019-10-22 08:50:24,065 DEBUG org.apache.hadoop.hdfs.server.namenode.FileJournalManager: passing over EditLogFile(file=/data/nn/current/edits_0000000000000000001-0000000000000000002,first=0000000000000000001,last=0000000000000000002,inProgress=false,hasCorruptHeader=false) because it ends at 2, but we only care about transactions as new as 3
+2019-10-22 08:50:24,065 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Starting log segment at 3
+2019-10-22 08:50:24,148 DEBUG org.apache.hadoop.hdfs.server.namenode.EditLogFileOutputStream: Preallocated 1048576 bytes at the end of the edit log (offset 0)
+2019-10-22 08:50:24,160 DEBUG org.apache.hadoop.hdfs.server.namenode.FSEditLog: logEdit [SyncEdit op:LogSegmentOp [opCode=OP_START_LOG_SEGMENT, txid=-12345]]
+2019-10-22 08:50:24,160 DEBUG org.apache.hadoop.hdfs.server.namenode.FSEditLog: logSync [SyncEdit op:LogSegmentOp [opCode=OP_START_LOG_SEGMENT, txid=-12345]]
+2019-10-22 08:50:24,170 INFO org.apache.hadoop.hdfs.server.namenode.NameCache: initialized with 0 entries 0 lookups
+2019-10-22 08:50:24,170 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Finished loading FSImage in 320 msecs
+2019-10-22 08:50:32,403 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Stopping services started for active state
+2019-10-22 08:50:32,403 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Ending log segment 3, 3
+2019-10-22 08:50:32,403 DEBUG org.apache.hadoop.hdfs.server.namenode.FSEditLog: logEdit [SyncEdit op:LogSegmentOp [opCode=OP_END_LOG_SEGMENT, txid=-12345]]
+2019-10-22 08:50:32,403 DEBUG org.apache.hadoop.hdfs.server.namenode.FSEditLog: logEdit [ op:null]
+2019-10-22 08:50:32,419 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: Number of transactions: 2 Total time for transactions(ms): 1 Number of transactions batched in Syncs: 2 Number of syncs: 3 SyncTimes(ms): 24 
+2019-10-22 08:50:32,421 INFO org.apache.hadoop.hdfs.server.namenode.FileJournalManager: Finalizing edits file /data/nn/current/edits_inprogress_0000000000000000003 -> /data/nn/current/edits_0000000000000000003-0000000000000000004
+2019-10-22 08:50:32,446 INFO org.apache.hadoop.hdfs.server.namenode.FSEditLog: FSEditLogAsync was interrupted, exiting
+2019-10-22 08:50:32,745 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Stopping services started for active state
+2019-10-22 08:50:32,745 DEBUG org.apache.hadoop.hdfs.server.namenode.FSEditLog: Closing log when already closed
+2019-10-22 08:50:32,745 INFO org.apache.hadoop.hdfs.server.namenode.FSNamesystem: Stopping services started for standby state
+2019-10-22 08:50:32,745 DEBUG org.apache.hadoop.hdfs.server.namenode.FSEditLog: Closing log when already closed
+2019-10-22 08:50:32,745 DEBUG org.apache.hadoop.hdfs.server.namenode.FSEditLog: Closing log when already closed
+2019-10-22 08:50:32,855 TRACE org.apache.htrace.core.TracerPool: TracerPool(Global): removing tracer Tracer(NameNode/192.168.48.3)

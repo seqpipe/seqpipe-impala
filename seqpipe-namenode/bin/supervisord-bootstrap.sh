@@ -22,7 +22,7 @@ if [[ ! -e /data/nn/current ]]; then
     	if [ $rc -ne 0 ]; then
 	    	echo -e	"HDFS initiation ERROR!"
     	else
-        	echo -e	"HDFS successfully initiaded!"
+        	echo -e	"HDFS successfully formatted!"
     	fi
 fi
 
@@ -32,7 +32,13 @@ echo -e	"Starting NameNode..."
 supervisorctl start hdfs-namenode
 
 /wait-for-it.sh localhost:8020 -t 120
-/wait-for-it.sh localhost:9870 -t 120
+rc=$?
+if [ $rc -ne 0 ]; then
+        echo -e "\n\n--------------------------------------------------------------------------------"
+        echo -e "ERROR: HDFS namenode failed to start"
+        echo -e "--------------------------------------------------------------------------------\n\n"
+        exit 1
+fi
 
 echo -e "\n\n--------------------------------------------------------------------------------"
 echo -e "You can now access to the following Hadoop Web UIs:"

@@ -28,7 +28,7 @@
 
 	<property>
 		<name>dfs.block.local-path-access.user</name>
-		<value>impala</value>
+		<value>hdfs</value>
 	</property>
 
 	<property>

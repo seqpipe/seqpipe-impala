@@ -4,8 +4,8 @@ USER root
 
 RUN apt-get install -y hadoop-hdfs-datanode
 
-RUN mkdir -p /data/run/hdfs-sockets; \
-    chown hdfs.hadoop /data/run/hdfs-sockets
+RUN mkdir -p /var/run/hdfs-sockets; \
+    chown hdfs.hadoop /var/run/hdfs-sockets
 RUN mkdir -p /data/dn/
 RUN chown hdfs.hadoop /data/dn
 

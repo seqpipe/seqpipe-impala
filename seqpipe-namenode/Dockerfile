@@ -5,13 +5,14 @@ USER root
 RUN apt-get install -y hadoop-hdfs-namenode
 
 
-RUN mkdir -p /data/run/hdfs-sockets; \
-    chown hdfs.hadoop /data/run/hdfs-sockets
+RUN mkdir -p /var/run/hdfs-sockets; \
+    chown hdfs.hadoop /var/run/hdfs-sockets
 RUN mkdir -p /data/dn/
 RUN chown hdfs.hadoop /data/dn
 
 ADD ./hadoop/conf/core-site.xml /etc/hadoop/conf/
 ADD ./hadoop/conf/hdfs-site.xml /etc/hadoop/conf/
+ADD ./hadoop/conf/log4j.properties /etc/hadoop/conf/
 
 ADD ./supervisor/supervisord.conf /etc/
 
