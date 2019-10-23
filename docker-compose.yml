@@ -32,9 +32,7 @@ services:
       context: ./seqpipe-datanode
     image: seqpipe/seqpipe-datanode:latest
     ports:
-      - "50075:50075"
-      - "50010:50010"
-      - "50020:50020"      
+      - "9864:9864"
     volumes:
       - type: bind
         source: ./impala_data
@@ -85,6 +83,24 @@ services:
       - "25020:25020"
       - "26000:26000"
       - "23020:23020"
+    volumes:
+      - type: bind
+        source: ./impala_data
+        target: /data
+    environment:
+      - SP_ZOOKEEPER=10.0.1.1
+      - SP_NAMENODE=10.0.1.1
+      - SP_HIVEMETASTORE=10.0.1.1
+      - SP_IMPALA_STATESTORE=10.0.1.1
+      - SP_IMPALA_CATALOG=10.0.1.1
+
+  impala:
+    build:
+      context: ./seqpipe-impala
+    image: seqpipe/seqpipe-impala:latest
+    ports:
+      - "25000:25000"
+      - "21050:21050"
     volumes:
       - type: bind
         source: ./impala_data
