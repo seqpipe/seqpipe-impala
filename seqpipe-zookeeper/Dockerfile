@@ -2,8 +2,6 @@ FROM seqpipe/seqpipe-cdh-base:latest
 
 USER root
 
-RUN apt-get install -y zookeeper
-
 COPY zookeeper/* /etc/zookeeper/conf/
 
 EXPOSE 2181

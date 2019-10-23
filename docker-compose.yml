@@ -57,3 +57,21 @@ services:
     environment:
       - ZOOKEEPER=10.0.1.1
       - NAMENODE=10.0.1.1
+      - HIVEMETASTORE=10.0.1.1
+
+  state_store:
+    build:
+      context: ./seqpipe-state-store
+    image: seqpipe/seqpipe-state-store:latest
+    ports:
+      - "23000:23000"
+      - "23020:23020"
+      - "25010:25010"
+    volumes:
+      - type: bind
+        source: ./impala_data
+        target: /data
+    environment:
+      - ZOOKEEPER=10.0.1.1
+      - NAMENODE=10.0.1.1
+      - HIVEMETASTORE=10.0.1.1

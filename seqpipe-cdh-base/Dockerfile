@@ -4,9 +4,14 @@ USER root
 
 ENV CDH_VERSION 6.3.1
 
-RUN apt-get update --fix-missing && \ 
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get update --fix-missing && \
+    apt-get -y dist-upgrade
+
+
+RUN DEBIAN_FRONTEND=noninteractive \
 	apt-get install -y wget gnupg2 supervisor less vim \
-    inetutils-ping telnet net-tools
+    inetutils-ping telnet net-tools apt-utils
 
 
 RUN echo \
@@ -17,7 +22,10 @@ RUN wget \
     https://archive.cloudera.com/cdh6/${CDH_VERSION}/ubuntu1804/apt/archive.key \
     && apt-key add archive.key
 
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get update --fix-missing
 
-RUN apt-get update --fix-missing
-
-RUN apt -y dist-upgrade
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y zookeeper \
+        hadoop-hdfs-datanode \
+        hadoop-hdfs-namenode

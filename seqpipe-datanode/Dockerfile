@@ -2,8 +2,6 @@ FROM seqpipe/seqpipe-cdh-base:latest
 
 USER root
 
-RUN apt-get install -y hadoop-hdfs-datanode
-
 RUN mkdir -p /var/run/hdfs-sockets; \
     chown hdfs.hadoop /var/run/hdfs-sockets
 RUN mkdir -p /data/dn/
