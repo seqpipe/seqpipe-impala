@@ -3,9 +3,9 @@
 set -e
 
 sed -i \
-    "s/ZOOKEEPER/${ZOOKEEPER}/g" /etc/hadoop/conf/core-site.xml
+    "s/SP_ZOOKEEPER/${SP_ZOOKEEPER}/g" /etc/hadoop/conf/core-site.xml
 sed -i \
-    "s/NAMENODE/${NAMENODE}/g" /etc/hadoop/conf/core-site.xml
+    "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/hadoop/conf/core-site.xml
 
 
 supervisorctl start postgresql
@@ -51,7 +51,7 @@ $HIVE_HOME/bin/schematool -dbType postgres -initSchema
 
 mkdir -p /opt/hive/hcatalog/var/log
 
-/wait-for-it.sh ${NAMENODE}:8020 -t 240
+/wait-for-it.sh ${SP_NAMENODE}:8020 -t 240
 
 supervisorctl start hive_metastore
 
@@ -72,5 +72,5 @@ if [ $rc -ne 0 ]; then
 fi
 
 echo -e "\n\n--------------------------------------------------------------------------------"
-echo -e "Hive Metastore running on localhost:9083"
+echo -e "Hive Metastore running on ${SP_HIVEMETASTORE}:9083"
 echo -e "--------------------------------------------------------------------------------\n\n"

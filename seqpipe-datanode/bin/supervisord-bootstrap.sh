@@ -1,9 +1,9 @@
 set -e
 
 sed -i \
-    "s/ZOOKEEPER/${ZOOKEEPER}/g" /etc/hadoop/conf/core-site.xml
+    "s/SP_ZOOKEEPER/${SP_ZOOKEEPER}/g" /etc/hadoop/conf/core-site.xml
 sed -i \
-    "s/NAMENODE/${NAMENODE}/g" /etc/hadoop/conf/core-site.xml
+    "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/hadoop/conf/core-site.xml
 
 mkdir -p /data/dn/
 chown hdfs:hadoop -R /data/dn
@@ -11,7 +11,7 @@ chown hdfs:hadoop -R /data/dn
 mkdir -p /data/lib/hadoop-hdfs/cache/hdfs/dfs/name
 chown hdfs:hadoop -R /data/lib/hadoop-hdfs
 
-/wait-for-it.sh ${NAMENODE}:8020 -t 120
+/wait-for-it.sh ${SP_NAMENODE}:8020 -t 120
 
 echo -e "\n---------------------------------------"
 echo -e	"Starting DataNode..."

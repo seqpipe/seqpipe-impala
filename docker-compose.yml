@@ -24,8 +24,8 @@ services:
         source: ./impala_data
         target: /data
     environment:
-      - ZOOKEEPER=10.0.1.1
-      - NAMENODE=10.0.1.1
+      - SP_ZOOKEEPER=10.0.1.1
+      - SP_NAMENODE=10.0.1.1
 
   datanode:
     build:
@@ -40,8 +40,8 @@ services:
         source: ./impala_data
         target: /data
     environment:
-      - ZOOKEEPER=10.0.1.1
-      - NAMENODE=10.0.1.1
+      - SP_ZOOKEEPER=10.0.1.1
+      - SP_NAMENODE=10.0.1.1
 
   hive_metastore:
     build:
@@ -55,23 +55,43 @@ services:
         source: ./impala_data
         target: /data
     environment:
-      - ZOOKEEPER=10.0.1.1
-      - NAMENODE=10.0.1.1
-      - HIVEMETASTORE=10.0.1.1
+      - SP_ZOOKEEPER=10.0.1.1
+      - SP_NAMENODE=10.0.1.1
+      - SP_HIVEMETASTORE=10.0.1.1
 
   state_store:
     build:
       context: ./seqpipe-state-store
     image: seqpipe/seqpipe-state-store:latest
     ports:
-      - "23000:23000"
-      - "23020:23020"
+      - "24000:24000"
       - "25010:25010"
     volumes:
       - type: bind
         source: ./impala_data
         target: /data
     environment:
-      - ZOOKEEPER=10.0.1.1
-      - NAMENODE=10.0.1.1
-      - HIVEMETASTORE=10.0.1.1
+      - SP_ZOOKEEPER=10.0.1.1
+      - SP_NAMENODE=10.0.1.1
+      - SP_HIVEMETASTORE=10.0.1.1
+      - SP_IMPALA_STATESTORE=10.0.1.1
+      - SP_IMPALA_CATALOG=10.0.1.1
+
+  catalog:
+    build:
+      context: ./seqpipe-catalog
+    image: seqpipe/seqpipe-catalog:latest
+    ports:
+      - "25020:25020"
+      - "26000:26000"
+      - "23020:23020"
+    volumes:
+      - type: bind
+        source: ./impala_data
+        target: /data
+    environment:
+      - SP_ZOOKEEPER=10.0.1.1
+      - SP_NAMENODE=10.0.1.1
+      - SP_HIVEMETASTORE=10.0.1.1
+      - SP_IMPALA_STATESTORE=10.0.1.1
+      - SP_IMPALA_CATALOG=10.0.1.1
