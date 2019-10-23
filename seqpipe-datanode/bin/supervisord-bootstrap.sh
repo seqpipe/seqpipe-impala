@@ -17,12 +17,12 @@ echo -e "\n---------------------------------------"
 echo -e	"Starting DataNode..."
 supervisorctl start hdfs-datanode
 
-/wait-for-it.sh localhost:50075 -t 120
-/wait-for-it.sh localhost:50010 -t 120
-/wait-for-it.sh localhost:50020 -t 120
+/wait-for-it.sh localhost:9864 -t 120
+# /wait-for-it.sh localhost:50010 -t 120
+# /wait-for-it.sh localhost:50020 -t 120
 
 echo -e "\n\n--------------------------------------------------------------------------------"
 echo -e "You can now access to the following Hadoop Web UIs:"
 echo -e ""
-echo -e "Hadoop - DataNode:                     http://localhost:50075"
+echo -e "Hadoop - DataNode:                     http://localhost:9864"
 echo -e "--------------------------------------------------------------------------------\n\n"

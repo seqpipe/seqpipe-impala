@@ -30,7 +30,7 @@
   </property>
   <property>
     <name>hive.metastore.uris</name>
-    <value>thrift://HIVEMETASTORE:9083</value>
+    <value>thrift://SP_HIVEMETASTORE:9083</value>
   </property>
   <property>
     <name>hive.server2.thrift.port</name>
