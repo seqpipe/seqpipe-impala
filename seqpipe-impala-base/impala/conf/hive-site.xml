@@ -1,25 +1,14 @@
 <configuration>
+  <property>
+    <name>hive.server2.authentication</name>
+    <value>PAM</value>
+  </property>
 
   <property>
     <name>hive.support.concurrency</name>
     <value>true</value>
   </property>
-  <property>
-    <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:postgresql://localhost:5432/metastore</value>
-  </property>
-  <property>
-    <name>javax.jdo.option.ConnectionDriverName</name>
-    <value>org.postgresql.Driver</value>
-  </property>
-  <property>
-    <name>javax.jdo.option.ConnectionUserName</name>
-    <value>postgres</value>
-  </property>
-  <property>
-    <name>javax.jdo.option.ConnectionPassword</name>
-    <value>postgres</value>
-  </property>
+
   <property>
     <name>datanucleus.autoCreateSchema</name>
     <value>true</value>
@@ -32,17 +21,9 @@
     <name>hive.metastore.uris</name>
     <value>thrift://SP_HIVEMETASTORE:9083</value>
   </property>
-  <property>
-    <name>hive.server2.thrift.port</name>
-    <value>10000</value>
-  </property>
-  <property>
-    <name>hive.server2.webui.port</name>
-    <value>10002</value>
-  </property>
-  <property>
-    <name>hive.zookeeper.quorum</name>
-    <description>Zookeeper quorum used by Hive's Table Lock Manager</description>
-    <value>zookeeper</value>
-  </property>
+  <property>                                                                                                                                 │                                Alternatively, you specify the host and port as host:port
+    <name>hive.metastore.sasl.enabled</name>                                                                                                 │    -s | --strict               Only execute subcommand if the test succeeds
+    <value>false</value>                                                                                                                     │    -q | --quiet                Don't output any status messages
+  </property> 
+
 </configuration>

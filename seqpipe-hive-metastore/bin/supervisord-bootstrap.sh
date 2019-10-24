@@ -7,6 +7,8 @@ sed -i \
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/hadoop/conf/core-site.xml
 
+sed -i \
+    "s/SP_NAMENODE/${SP_NAMENODE}/g" /fix_default_location.sql
 
 supervisorctl start postgresql
 

@@ -2,7 +2,7 @@
 
 	<property>
 		<name>fs.defaultFS</name>
-		<value>hdfs://SP_NAMENODE:8020</value>
+		<value>hdfs://SP_NAMENODE:8020/</value>
 	</property>
 	<property>
 		<name>dfs.client.read.shortcircuit</name>

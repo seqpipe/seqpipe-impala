@@ -21,6 +21,10 @@ ADD ./impala/conf/hive-site.xml /etc/impala/conf/
 
 ADD ./etc/default/impala /etc/default/impala
 
+ADD ./impala/conf/core-site.xml /etc/hadoop/conf/
+ADD ./impala/conf/hdfs-site.xml /etc/hadoop/conf/
+ADD ./impala/conf/hive-site.xml /etc/hadoop/conf/
+
 VOLUME ["/data"]
 
 EXPOSE 21000 21050 22000 23000 23020 24000 25000 25010 25020 26000

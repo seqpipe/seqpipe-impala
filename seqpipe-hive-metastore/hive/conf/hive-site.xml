@@ -2,7 +2,7 @@
     <!-- ALA BALA NICA -->
   <property>
     <name>hive.server2.authentication</name>
-    <value>NOSASL</value>
+    <value>PAM</value>
   </property>
   <property>
     <name>hive.support.concurrency</name>
@@ -34,8 +34,12 @@
   </property>
   <property>
     <name>hive.metastore.uris</name>
-    <value>thrift://localhost:9083</value>
+    <value>thrift://0.0.0.0:9083</value>
   </property>
+  <property>                                                                                                                                 │                                Alternatively, you specify the host and port as host:port
+    <name>hive.metastore.sasl.enabled</name>                                                                                                 │    -s | --strict               Only execute subcommand if the test succeeds
+    <value>false</value>                                                                                                                     │    -q | --quiet                Don't output any status messages
+  </property> 
 
     <!-- ALA BALA NICA -->
 

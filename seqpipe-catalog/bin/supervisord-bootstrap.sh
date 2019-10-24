@@ -1,6 +1,13 @@
 set -e
 
 sed -i \
+    "s/SP_ZOOKEEPER/${SP_ZOOKEEPER}/g" /etc/hadoop/conf/core-site.xml
+sed -i \
+    "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/hadoop/conf/core-site.xml
+sed -i \
+    "s/SP_HIVEMETASTORE/${SP_HIVEMETASTORE}/g" /etc/hadoop/conf/hive-site.xml
+
+sed -i \
     "s/SP_ZOOKEEPER/${SP_ZOOKEEPER}/g" /etc/impala/conf/core-site.xml
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/impala/conf/core-site.xml
@@ -24,14 +31,26 @@ if [ $rc -ne 0 ]; then
     exit 1
 fi
 
-/wait-for-it.sh ${SP_IMPALA_STATESTORE}:24000 -t 240
+
+supervisorctl start impala-state-store
+/wait-for-it.sh localhost:25010 -t 120
 
 rc=$?
 if [ $rc -ne 0 ]; then
     echo -e "\n---------------------------------------"
-    echo -e "  Impala StateStore not ready! Exiting..."
+    echo -e "     Impala statestore not ready! Exiting..."
     echo -e "---------------------------------------"
-    exit 1
+    exit $rc
+fi
+
+/wait-for-it.sh localhost:24000 -t 120
+
+rc=$?
+if [ $rc -ne 0 ]; then
+    echo -e "\n---------------------------------------"
+    echo -e "     Impala statestore not ready! Exiting..."
+    echo -e "---------------------------------------"
+    exit $rc
 fi
 
 supervisorctl start impala-catalog
@@ -63,6 +82,10 @@ fi
 #     exit $rc
 # fi
 
+echo -e "\n\n--------------------------------------------------------------------------------"
+echo -e "You can now access to the following Impala UIs:\n"
+echo -e "Impala State Store      http://${SP_IMPALA_STATESTORE}:25020"
+echo -e "--------------------------------------------------------------------------------\n\n"
 
 echo -e "\n\n--------------------------------------------------------------------------------"
 echo -e "You can now access to the following Impala UIs:\n"

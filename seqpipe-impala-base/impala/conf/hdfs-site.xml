@@ -6,7 +6,7 @@
 
 	<property>
 		<name>dfs.client.read.shortcircuit</name>
-		<value>false</value> <!-- FIXME: -->
+		<value>true</value>
 	</property>
 	<property>
 		<name>dfs.domain.socket.path</name>
