@@ -25,6 +25,7 @@ VOLUME ["/data"]
 
 WORKDIR /
 
-EXPOSE 8020 9870
+EXPOSE 8032 8033 8030 8031 8088 8090
+
 
 ENTRYPOINT ["supervisord", "-c", "/etc/supervisord.conf", "-n"]

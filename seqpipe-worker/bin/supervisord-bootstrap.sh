@@ -5,6 +5,8 @@ sed -i \
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/hadoop/conf/core-site.xml
 
+sed -i \
+    "s/SP_RESOURCEMANAGER/${SP_RESOURCEMANAGER}/g" /etc/hadoop/conf/yarn-site.xml
 
 sed -i \
     "s/SP_ZOOKEEPER/${SP_ZOOKEEPER}/g" /etc/impala/conf/core-site.xml
@@ -55,6 +57,17 @@ echo -e "You can now access to the following Hadoop Web UIs:"
 echo -e ""
 echo -e "Hadoop - DataNode:                     http://localhost:9864"
 echo -e "--------------------------------------------------------------------------------\n\n"
+
+
+supervisorctl start yarn-nodemanager
+./wait-for-it.sh localhost:8042 -t 60
+rc=$?
+if [ $rc -ne 0 ]; then
+    echo -e "\n--------------------------------------------"
+    echo -e "YARN Node Manager not ready! Exiting..."
+    echo -e "--------------------------------------------"
+    exit $rc
+fi
 
 /wait-for-it.sh ${SP_HIVEMETASTORE}:9083 -t 240
 rc=$?
