@@ -57,24 +57,26 @@ services:
       - SP_NAMENODE=10.0.1.1
       - SP_HIVEMETASTORE=10.0.1.1
 
-  # state_store:
-  #   build:
-  #     context: ./seqpipe-state-store
-  #   image: seqpipe/seqpipe-state-store:latest
-  #   ports:
-  #     - "24000:24000"
-  #     - "25010:25010"
-  #   volumes:
-  #     - type: bind
-  #       source: ./impala_data
-  #       target: /data
-  #   environment:
-  #     - SP_ZOOKEEPER=10.0.1.1
-  #     - SP_NAMENODE=10.0.1.1
-  #     - SP_HIVEMETASTORE=10.0.1.1
-  #     - SP_IMPALA_STATESTORE=10.0.1.1
-  #     - SP_IMPALA_CATALOG=10.0.1.1
-
+  resourcemanager:
+    build:
+      context: ./seqpipe-resourcemanager
+    image: seqpipe/seqpipe-resourcemanager:latest
+    ports:
+      - "8032:8032"
+      - "8033:8033"
+      - "8030:8030"
+      - "8031:8031"
+      - "8088:8088"
+      - "8090:8090"
+    volumes:
+      - type: bind
+        source: ./impala_data
+        target: /data
+    environment:
+      - SP_ZOOKEEPER=10.0.1.1
+      - SP_NAMENODE=10.0.1.1
+      - SP_HIVEMETASTORE=10.0.1.1
+      - SP_RESOURCEMANAGER=10.0.1.1
   catalog:
     build:
       context: ./seqpipe-catalog
@@ -133,3 +135,4 @@ services:
       - SP_HIVEMETASTORE=10.0.1.1
       - SP_IMPALA_STATESTORE=10.0.1.1
       - SP_IMPALA_CATALOG=10.0.1.1
+      - SP_RESOURCEMANAGER=10.0.1.1
