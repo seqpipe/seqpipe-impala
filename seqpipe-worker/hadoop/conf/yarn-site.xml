@@ -122,4 +122,8 @@
     <name>yarn.nodemanager.resource.memory-mb</name>
     <value>41216</value>
   </property>
+  <property>
+    <name>yarn.nodemanager.address</name>
+    <value>0.0.0.0:32032</value>
+  </property>  
 </configuration>
