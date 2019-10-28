@@ -56,7 +56,7 @@
   </property>
   <property>
     <name>yarn.scheduler.maximum-allocation-mb</name>
-    <value>41216</value>
+    <value>40960</value>
   </property>
   <property>
     <name>yarn.scheduler.minimum-allocation-vcores</name>
@@ -68,7 +68,7 @@
   </property>
   <property>
     <name>yarn.scheduler.maximum-allocation-vcores</name>
-    <value>12</value>
+    <value>16</value>
   </property>
   <property>
     <name>yarn.resourcemanager.amliveliness-monitor.interval-ms</name>
@@ -117,5 +117,9 @@
   <property>
     <name>yarn.nodemanager.remote-app-log-dir-suffix</name>
     <value>logs</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>41216</value>
   </property>
 </configuration>
