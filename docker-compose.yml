@@ -5,6 +5,7 @@ services:
     build:
       context: ./seqpipe-zookeeper
     image: seqpipe/seqpipe-zookeeper:latest
+    hostname: zookeeper
     ports:
       - "2181:2181"
     volumes:
@@ -16,6 +17,7 @@ services:
     build:
       context: ./seqpipe-namenode
     image: seqpipe/seqpipe-namenode:latest
+    hostname: namenode
     ports:
       - "8020:8020"
       - "9870:9870"
@@ -26,20 +28,6 @@ services:
     environment:
       - SP_ZOOKEEPER=10.0.1.1
       - SP_NAMENODE=10.0.1.1
-
-  # datanode:
-  #   build:
-  #     context: ./seqpipe-datanode
-  #   image: seqpipe/seqpipe-datanode:latest
-  #   ports:
-  #     - "9864:9864"
-  #   volumes:
-  #     - type: bind
-  #       source: ./impala_data
-  #       target: /data
-  #   environment:
-  #     - SP_ZOOKEEPER=10.0.1.1
-  #     - SP_NAMENODE=10.0.1.1
 
   hive_metastore:
     build:
@@ -61,6 +49,7 @@ services:
     build:
       context: ./seqpipe-resourcemanager
     image: seqpipe/seqpipe-resourcemanager:latest
+    hostname: resourcemanager
     ports:
       - "8032:8032"
       - "8033:8033"
@@ -77,10 +66,12 @@ services:
       - SP_NAMENODE=10.0.1.1
       - SP_HIVEMETASTORE=10.0.1.1
       - SP_RESOURCEMANAGER=10.0.1.1
+
   catalog:
     build:
       context: ./seqpipe-catalog
     image: seqpipe/seqpipe-catalog:latest
+    hostname: catalog
     ports:
       - "24000:24000"
       - "25010:25010"
@@ -98,29 +89,11 @@ services:
       - SP_IMPALA_STATESTORE=10.0.1.1
       - SP_IMPALA_CATALOG=10.0.1.1
 
-  # impala:
-  #   build:
-  #     context: ./seqpipe-impala
-  #   image: seqpipe/seqpipe-impala:latest
-  #   ports:
-  #     - "25000:25000"
-  #     - "21050:21050"
-  #   volumes:
-  #     - type: bind
-  #       source: ./impala_data
-  #       target: /data
-  #   environment:
-  #     - SP_ZOOKEEPER=10.0.1.1
-  #     - SP_NAMENODE=10.0.1.1
-  #     - SP_HIVEMETASTORE=10.0.1.1
-  #     - SP_IMPALA_STATESTORE=10.0.1.1
-  #     - SP_IMPALA_CATALOG=10.0.1.1
-
   worker:
     build:
       context: ./seqpipe-worker
     image: seqpipe/seqpipe-worker:latest
-    hostname: dory.local
+    hostname: worker
     ports:
       - "9864:9864"
       - "9866:9866"
