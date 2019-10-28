@@ -12,22 +12,6 @@ services:
       - type: bind
         source: ./impala_data
         target: /data
-  
-  namenode:
-    build:
-      context: ./seqpipe-namenode
-    image: seqpipe/seqpipe-namenode:latest
-    hostname: namenode
-    ports:
-      - "8020:8020"
-      - "9870:9870"
-    volumes:
-      - type: bind
-        source: ./impala_data
-        target: /data
-    environment:
-      - SP_ZOOKEEPER=10.0.1.1
-      - SP_NAMENODE=10.0.1.1
 
   hive_metastore:
     build:
@@ -45,34 +29,20 @@ services:
       - SP_NAMENODE=10.0.1.1
       - SP_HIVEMETASTORE=10.0.1.1
 
-  resourcemanager:
+  controller:
     build:
-      context: ./seqpipe-resourcemanager
-    image: seqpipe/seqpipe-resourcemanager:latest
-    hostname: resourcemanager
+      context: ./seqpipe-controller
+    image: seqpipe/seqpipe-controller:latest
+    hostname: dory.seqpipe.org
     ports:
+      - "8020:8020"
+      - "9870:9870"
       - "8032:8032"
       - "8033:8033"
       - "8030:8030"
       - "8031:8031"
       - "8088:8088"
       - "8090:8090"
-    volumes:
-      - type: bind
-        source: ./impala_data
-        target: /data
-    environment:
-      - SP_ZOOKEEPER=10.0.1.1
-      - SP_NAMENODE=10.0.1.1
-      - SP_HIVEMETASTORE=10.0.1.1
-      - SP_RESOURCEMANAGER=10.0.1.1
-
-  catalog:
-    build:
-      context: ./seqpipe-catalog
-    image: seqpipe/seqpipe-catalog:latest
-    hostname: catalog
-    ports:
       - "24000:24000"
       - "25010:25010"
       - "25020:25020"
