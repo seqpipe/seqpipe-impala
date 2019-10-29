@@ -11,7 +11,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
 
 RUN DEBIAN_FRONTEND=noninteractive \
 	apt-get install -y wget gnupg2 supervisor less vim \
-    inetutils-ping telnet net-tools apt-utils
+    inetutils-ping telnet net-tools apt-utils \
+    openjdk-8-jdk-headless \
+    && apt purge openjdk-11*
 
 
 RUN echo \
