@@ -6,11 +6,15 @@ sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/hadoop/conf/core-site.xml
 sed -i \
     "s/SP_HIVEMETASTORE/${SP_HIVEMETASTORE}/g" /etc/hadoop/conf/hive-site.xml
+sed -i \
+    "s/SP_REPLICATION/${SP_REPLICATION}/g" /etc/hadoop/conf/hdfs-site.xml
 
 sed -i \
     "s/SP_ZOOKEEPER/${SP_ZOOKEEPER}/g" /etc/impala/conf/core-site.xml
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/impala/conf/core-site.xml
+sed -i \
+    "s/SP_REPLICATION/${SP_REPLICATION}/g" /etc/impala/conf/hdfs-site.xml
 sed -i \
     "s/SP_HIVEMETASTORE/${SP_HIVEMETASTORE}/g" /etc/impala/conf/hive-site.xml
 

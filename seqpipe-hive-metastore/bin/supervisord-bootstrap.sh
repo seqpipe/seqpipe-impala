@@ -6,6 +6,8 @@ sed -i \
     "s/SP_ZOOKEEPER/${SP_ZOOKEEPER}/g" /etc/hadoop/conf/core-site.xml
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/hadoop/conf/core-site.xml
+sed -i \
+    "s/SP_REPLICATION/${SP_REPLICATION}/g" /etc/hadoop/conf/hdfs-site.xml
 
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /fix_default_location.sql

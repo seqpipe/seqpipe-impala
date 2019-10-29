@@ -25,6 +25,7 @@ services:
         source: ./impala_data
         target: /data
     environment:
+      - SP_REPLICATION=1
       - SP_ZOOKEEPER=10.0.1.1
       - SP_NAMENODE=10.0.1.1
       - SP_HIVEMETASTORE=10.0.1.1
@@ -32,8 +33,10 @@ services:
   controller:
     build:
       context: ./seqpipe-controller
+      network: host
     image: seqpipe/seqpipe-controller:latest
     hostname: dory.seqpipe.org
+    network_mode: "host"
     ports:
       - "8020:8020"
       - "9870:9870"
@@ -53,6 +56,7 @@ services:
         source: ./impala_data
         target: /data
     environment:
+      - SP_REPLICATION=1
       - SP_ZOOKEEPER=10.0.1.1
       - SP_NAMENODE=10.0.1.1
       - SP_HIVEMETASTORE=10.0.1.1
@@ -62,8 +66,10 @@ services:
   worker:
     build:
       context: ./seqpipe-worker
+      network: host
     image: seqpipe/seqpipe-worker:latest
-    hostname: worker
+    hostname: dory.seqpipe.org
+    network_mode: "host"
     ports:
       - "9864:9864"
       - "9866:9866"
@@ -79,13 +85,13 @@ services:
       - "4040:4040"
       - "7077:7077"
       - "32000-32016:32000-32016"
-      - "32032:32032"
       # - "8080:8080"
     volumes:
       - type: bind
         source: ./impala_data
         target: /data
     environment:
+      - SP_REPLICATION=1
       - SP_ZOOKEEPER=10.0.1.1
       - SP_NAMENODE=10.0.1.1
       - SP_HIVEMETASTORE=10.0.1.1

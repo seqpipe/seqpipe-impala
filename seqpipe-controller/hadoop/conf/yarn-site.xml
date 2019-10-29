@@ -120,10 +120,10 @@
   </property>
   <property>
     <name>yarn.nodemanager.resource.memory-mb</name>
-    <value>41216</value>
+    <value>65536</value>
   </property>
   <property>
     <name>yarn.nodemanager.address</name>
-    <value>0.0.0.0:32032</value>
+    <value>0.0.0.0:32000</value>
   </property>  
 </configuration>
