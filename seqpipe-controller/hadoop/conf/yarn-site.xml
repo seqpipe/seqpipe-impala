@@ -56,7 +56,7 @@
   </property>
   <property>
     <name>yarn.scheduler.maximum-allocation-mb</name>
-    <value>65536</value>
+    <value>131072</value>
   </property>
   <property>
     <name>yarn.scheduler.minimum-allocation-vcores</name>
@@ -120,7 +120,7 @@
   </property>
   <property>
     <name>yarn.nodemanager.resource.memory-mb</name>
-    <value>131072</value>
+    <value>196608</value>
   </property>
   <property>
     <name>yarn.nodemanager.address</name>
