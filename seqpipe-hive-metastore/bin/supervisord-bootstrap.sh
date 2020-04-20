@@ -23,14 +23,14 @@ if [ $rc -ne 0 ]; then
 	exit $rc
 fi
 
-psql -h localhost -U postgres -c "CREATE DATABASE metastore;"
+# psql -h localhost -U postgres -c "CREATE DATABASE metastore;"
 
 export COUNT=0
 
 while :
 do
     export COUNT=COUNT+1
-    sleep 2
+    sleep 3
 
     export RESULT=$(psql -h localhost -U postgres -c "CREATE DATABASE metastore;" 2>&1)
 
@@ -39,7 +39,6 @@ do
             break
     else
             echo "ERROR: database 'metastore' not created"
-            export DONE=0
     fi
 
     if [[ $COUNT > 10 ]];
