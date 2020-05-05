@@ -50,7 +50,14 @@ do
     fi
 done
 
-$HIVE_HOME/bin/schematool -dbType postgres -initSchema
+export RESULT=$($HIVE_HOME/bin/schematool -dbType postgres -validate )
+echo $RESULT
+
+if [[ ($RESULT =~ "SUCCESS") ]]; then
+    echo "METASTORE catalog already exists... nothing to do..."
+else
+    $HIVE_HOME/bin/schematool -dbType postgres -initSchema
+fi
 
 mkdir -p /opt/hive/hcatalog/var/log
 
