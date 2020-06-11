@@ -29,8 +29,8 @@ export COUNT=0
 
 while :
 do
-    export COUNT=COUNT+1
-    sleep 3
+    ((COUNT+=1))
+    sleep 5
 
     export RESULT=$(psql -h localhost -U postgres -c "CREATE DATABASE metastore;" 2>&1)
 
@@ -41,7 +41,7 @@ do
             echo "ERROR: database 'metastore' not created"
     fi
 
-    if [[ $COUNT > 10 ]];
+    if [[ $COUNT > 5 ]];
     then
             echo -e "\n\n--------------------------------------------------------------------------------"
             echo -e "ERROR: Can't init Hive Metastore"

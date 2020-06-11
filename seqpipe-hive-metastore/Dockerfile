@@ -5,9 +5,8 @@ USER root
 # Install ``python-software-properties``, ``software-properties-common`` and PostgreSQL 9.3
 #  There are some warnings (in red) that show up during the build. You can hide
 #  them by prefixing each apt-get statement with DEBIAN_FRONTEND=noninteractive
-RUN DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y postgresql postgresql-client \
-    postgresql-contrib
+RUN DEBIAN_FRONTEND=noninteractive  apt update && \
+    apt install -y postgresql postgresql-client postgresql-contrib
 
 # Run the rest of the commands as the ``postgres`` user created by the 
 # ``postgres`` package when it was ``apt-get installed``
