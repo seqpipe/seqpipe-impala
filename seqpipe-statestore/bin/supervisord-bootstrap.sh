@@ -25,7 +25,7 @@ sed -i \
     "s/SP_IMPALA_CATALOG/${SP_IMPALA_CATALOG}/g" /etc/default/impala
 
 
-/wait-for-it.sh ${SP_HIVEMETASTORE}:9083 -t 240
+/wait-for-it.sh ${SP_HIVEMETASTORE}:9083 -t 360
 
 rc=$?
 if [ $rc -ne 0 ]; then
@@ -57,41 +57,8 @@ if [ $rc -ne 0 ]; then
     exit $rc
 fi
 
-# supervisorctl start impala-catalog
-
-# /wait-for-it.sh localhost:25020 -t 120
-# rc=$?
-# if [ $rc -ne 0 ]; then
-#     echo -e "\n---------------------------------------"
-#     echo -e "     Impala catalog not ready! Exiting..."
-#     echo -e "---------------------------------------"
-#     exit $rc
-# fi
-
-# /wait-for-it.sh localhost:23020 -t 120
-# rc=$?
-# if [ $rc -ne 0 ]; then
-#     echo -e "\n---------------------------------------"
-#     echo -e "     Impala catalog not ready! Exiting..."
-#     echo -e "---------------------------------------"
-#     exit $rc
-# fi
-
-# /wait-for-it.sh localhost:26000 -t 120
-# rc=$?
-# if [ $rc -ne 0 ]; then
-#     echo -e "\n---------------------------------------"
-#     echo -e "     Impala catalog not ready! Exiting..."
-#     echo -e "---------------------------------------"
-#     exit $rc
-# fi
 
 echo -e "\n\n--------------------------------------------------------------------------------"
 echo -e "You can now access to the following Impala UIs:\n"
 echo -e "Impala State Store      http://${SP_IMPALA_STATESTORE}:25020"
 echo -e "--------------------------------------------------------------------------------\n\n"
-
-# echo -e "\n\n--------------------------------------------------------------------------------"
-# echo -e "You can now access to the following Impala UIs:\n"
-# echo -e "Impala Catalog      http://${SP_IMPALA_CATALOG}:25020"
-# echo -e "--------------------------------------------------------------------------------\n\n"

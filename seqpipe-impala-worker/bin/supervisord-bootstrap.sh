@@ -73,7 +73,7 @@ echo -e "-----------------------------------------------------------------------
 #     exit $rc
 # fi
 
-/wait-for-it.sh ${SP_HIVEMETASTORE}:9083 -t 240
+/wait-for-it.sh ${SP_HIVEMETASTORE}:9083 -t 360
 rc=$?
 if [ $rc -ne 0 ]; then
     echo -e "\n---------------------------------------"
