@@ -4,15 +4,15 @@ IMPALA_STATE_STORE_PORT=24000
 IMPALA_BACKEND_PORT=22000
 IMPALA_LOG_DIR=/var/log/impala
 
-IMPALA_CATALOG_ARGS=" -log_dir=${IMPALA_LOG_DIR} "
-IMPALA_STATE_STORE_ARGS=" -log_dir=${IMPALA_LOG_DIR} -state_store_port=${IMPALA_STATE_STORE_PORT}"
+IMPALA_CATALOG_ARGS=" -log_dir=${IMPALA_LOG_DIR} -state_store_port=${IMPALA_STATE_STORE_PORT} -state_store_host=${IMPALA_STATE_STORE_HOST} -load_catalog_in_background "
+IMPALA_STATE_STORE_ARGS=" -log_dir=${IMPALA_LOG_DIR} -state_store_port=${IMPALA_STATE_STORE_PORT} -state_store_host=${IMPALA_STATE_STORE_HOST} "
 IMPALA_SERVER_ARGS=" \
     -log_dir=${IMPALA_LOG_DIR} \
     -catalog_service_host=${IMPALA_CATALOG_SERVICE_HOST} \
     -state_store_port=${IMPALA_STATE_STORE_PORT} \
     -state_store_host=${IMPALA_STATE_STORE_HOST} \
     -use_statestore \
-    -be_port=${IMPALA_BACKEND_PORT}"
+    -be_port=${IMPALA_BACKEND_PORT} "
 
 ENABLE_CORE_DUMPS=false
 

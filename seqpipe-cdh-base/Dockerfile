@@ -2,7 +2,7 @@ FROM amd64/ubuntu:18.04
 
 USER root
 
-ENV CDH_VERSION 6.3.1
+ENV CDH_VERSION 6.3.2
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update --fix-missing && \

@@ -5,18 +5,19 @@ sed -i \
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/hadoop/conf/core-site.xml
 sed -i \
-    "s/SP_HIVEMETASTORE/${SP_HIVEMETASTORE}/g" /etc/hadoop/conf/hive-site.xml
-sed -i \
     "s/SP_REPLICATION/${SP_REPLICATION}/g" /etc/hadoop/conf/hdfs-site.xml
+
+sed -i \
+    "s/SP_RESOURCEMANAGER/${SP_RESOURCEMANAGER}/g" /etc/hadoop/conf/yarn-site.xml
 
 sed -i \
     "s/SP_ZOOKEEPER/${SP_ZOOKEEPER}/g" /etc/impala/conf/core-site.xml
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /etc/impala/conf/core-site.xml
 sed -i \
-    "s/SP_REPLICATION/${SP_REPLICATION}/g" /etc/impala/conf/hdfs-site.xml
-sed -i \
     "s/SP_HIVEMETASTORE/${SP_HIVEMETASTORE}/g" /etc/impala/conf/hive-site.xml
+sed -i \
+    "s/SP_REPLICATION/${SP_REPLICATION}/g" /etc/impala/conf/hdfs-site.xml
 
 
 sed -i \
@@ -25,8 +26,7 @@ sed -i \
     "s/SP_IMPALA_CATALOG/${SP_IMPALA_CATALOG}/g" /etc/default/impala
 
 
-/wait-for-it.sh ${SP_HIVEMETASTORE}:9083 -t 360
-
+/wait-for-it.sh ${SP_HIVEMETASTORE}:9083 -t 240
 rc=$?
 if [ $rc -ne 0 ]; then
     echo -e "\n---------------------------------------"
@@ -35,35 +35,34 @@ if [ $rc -ne 0 ]; then
     exit 1
 fi
 
-
-# supervisorctl start impala-state-store
-/wait-for-it.sh ${SP_IMPALA_STATESTORE}:25010 -t 300
+/wait-for-it.sh ${SP_IMPALA_STATESTORE}:24000 -t 240
 
 rc=$?
 if [ $rc -ne 0 ]; then
     echo -e "\n---------------------------------------"
-    echo -e "     Impala statestore not ready! Exiting..."
+    echo -e "  Impala StateStore not ready! Exiting..."
     echo -e "---------------------------------------"
-    exit $rc
+    exit 1
 fi
 
-/wait-for-it.sh ${SP_IMPALA_STATESTORE}:24000 -t 120
+/wait-for-it.sh ${SP_IMPALA_CATALOG}:25020 -t 240
 
 rc=$?
 if [ $rc -ne 0 ]; then
     echo -e "\n---------------------------------------"
-    echo -e "     Impala statestore not ready! Exiting..."
+    echo -e "  Impala Catalog not ready! Exiting..."
     echo -e "---------------------------------------"
-    exit $rc
+    exit 1
 fi
 
-supervisorctl start impala-catalog
+supervisorctl start impala-server
 
-/wait-for-it.sh localhost:25020 -t 120
+/wait-for-it.sh localhost:21050 -t 120
+/wait-for-it.sh localhost:25000 -t 120
 rc=$?
 if [ $rc -ne 0 ]; then
     echo -e "\n---------------------------------------"
-    echo -e "     Impala catalog not ready! Exiting..."
+    echo -e "     Impala not ready! Exiting..."
     echo -e "---------------------------------------"
     exit $rc
 fi
@@ -71,5 +70,5 @@ fi
 
 echo -e "\n\n--------------------------------------------------------------------------------"
 echo -e "You can now access to the following Impala UIs:\n"
-echo -e "Impala Catalog      http://${SP_IMPALA_CATALOG}:25020"
+echo -e "Impala Daemon      http://localhost:25000"
 echo -e "--------------------------------------------------------------------------------\n\n"

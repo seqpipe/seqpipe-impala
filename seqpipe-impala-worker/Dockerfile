@@ -1,14 +1,13 @@
-FROM seqpipe/seqpipe-cdh-base:CDH6.3.2
+FROM seqpipe/seqpipe-impala-base:CDH6.3.2
 
 USER root
 
 RUN mkdir -p /var/run/hdfs-sockets; \
     chown hdfs.hadoop /var/run/hdfs-sockets
-RUN mkdir -p /data/dn/
-RUN chown hdfs.hadoop /data/dn
+RUN mkdir -p /data/dn; \
+     chown hdfs.hadoop /data/dn
 
-ADD ./hadoop/conf/core-site.xml /etc/hadoop/conf/
-ADD ./hadoop/conf/hdfs-site.xml /etc/hadoop/conf/
+ADD ./hadoop/conf/yarn-site.xml /etc/hadoop/conf/
 
 ADD ./supervisor/supervisord.conf /etc/
 
@@ -20,6 +19,8 @@ VOLUME ["/data"]
 
 WORKDIR /
 
-EXPOSE 8020 9870
+EXPOSE 21000 21050 22000 23000 25000 27000 28000
+EXPOSE 9864 50075 50010 50020
+
 
 ENTRYPOINT ["supervisord", "-c", "/etc/supervisord.conf", "-n"]

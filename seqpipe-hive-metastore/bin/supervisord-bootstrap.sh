@@ -23,14 +23,14 @@ if [ $rc -ne 0 ]; then
 	exit $rc
 fi
 
-psql -h localhost -U postgres -c "CREATE DATABASE metastore;"
+# psql -h localhost -U postgres -c "CREATE DATABASE metastore;"
 
 export COUNT=0
 
 while :
 do
-    export COUNT=COUNT+1
-    sleep 2
+    ((COUNT+=1))
+    sleep 5
 
     export RESULT=$(psql -h localhost -U postgres -c "CREATE DATABASE metastore;" 2>&1)
 
@@ -39,10 +39,9 @@ do
             break
     else
             echo "ERROR: database 'metastore' not created"
-            export DONE=0
     fi
 
-    if [[ $COUNT > 10 ]];
+    if [[ $COUNT > 5 ]];
     then
             echo -e "\n\n--------------------------------------------------------------------------------"
             echo -e "ERROR: Can't init Hive Metastore"
@@ -51,7 +50,14 @@ do
     fi
 done
 
-$HIVE_HOME/bin/schematool -dbType postgres -initSchema
+export RESULT=$($HIVE_HOME/bin/schematool -dbType postgres -validate )
+echo $RESULT
+
+if [[ ($RESULT =~ "SUCCESS") ]]; then
+    echo "METASTORE catalog already exists... nothing to do..."
+else
+    $HIVE_HOME/bin/schematool -dbType postgres -initSchema
+fi
 
 mkdir -p /opt/hive/hcatalog/var/log
 
