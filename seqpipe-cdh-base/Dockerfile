@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
 	apt-get install -y wget gnupg2 supervisor less vim \
     inetutils-ping telnet net-tools apt-utils \
     openjdk-8-jdk-headless \
+    ldap-auth-client nscd \
     && apt purge openjdk-11*
 
 
@@ -30,4 +31,5 @@ RUN DEBIAN_FRONTEND=noninteractive \
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get install -y zookeeper \
         hadoop-hdfs-datanode \
-        hadoop-hdfs-namenode
+        hadoop-hdfs-namenode \
+        hadoop-hdfs-nfs3
