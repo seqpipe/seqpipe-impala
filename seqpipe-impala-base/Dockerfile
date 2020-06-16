@@ -9,8 +9,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
         impala-catalog \
         impala-state-store
 
-RUN groupadd supergroup; \ 
-    usermod -a -G supergroup impala; \
+RUN usermod -a -G supergroup impala; \
     usermod -a -G hdfs impala; \
     usermod -a -G supergroup hive; \
     usermod -a -G hdfs hive

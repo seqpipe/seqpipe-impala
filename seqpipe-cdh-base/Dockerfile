@@ -33,3 +33,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
         hadoop-hdfs-datanode \
         hadoop-hdfs-namenode \
         hadoop-hdfs-nfs3
+
+RUN groupadd -r -g 1000 supergroup
+RUN useradd -r -u 1000 -g 1000 user0
+RUN useradd -r -u 1001 -g 1000 user1
+RUN useradd -r -u 1002 -g 1000 user2
+RUN useradd -r -u 1003 -g 1000 user3
+RUN useradd -r -u 1004 -g 1000 user4
+RUN useradd -r -u 1005 -g 1000 user5

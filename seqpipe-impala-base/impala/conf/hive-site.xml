@@ -21,9 +21,9 @@
     <name>hive.metastore.uris</name>
     <value>thrift://SP_HIVEMETASTORE:9083</value>
   </property>
-  <property>                                                                                                                                 │                                Alternatively, you specify the host and port as host:port
-    <name>hive.metastore.sasl.enabled</name>                                                                                                 │    -s | --strict               Only execute subcommand if the test succeeds
-    <value>false</value>                                                                                                                     │    -q | --quiet                Don't output any status messages
+  <property>
+    <name>hive.metastore.sasl.enabled</name>
+    <value>false</value>
   </property> 
 
 </configuration>
