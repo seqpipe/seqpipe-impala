@@ -119,3 +119,16 @@ echo -e "\n\n-------------------------------------------------------------------
 echo -e "You can now access to the following Impala UIs:\n"
 echo -e "Impala Daemon      http://localhost:25000"
 echo -e "--------------------------------------------------------------------------------\n\n"
+
+
+if [[ $SP_HDFS_NFS_GATEWAY -eq "yes" ]]; then
+
+    echo -e "\n---------------------------------------"
+    echo -e "     Starting HDFS to NFS gateway..."
+    echo -e "---------------------------------------"
+
+    supervisorctl start rpcbind
+
+    supervisorctl start hdfs-nfs-gateway
+
+fi
