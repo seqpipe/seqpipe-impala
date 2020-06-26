@@ -57,6 +57,8 @@ if [ $rc -ne 0 ]; then
     exit $rc
 fi
 
+sleep 30
+
 supervisorctl start impala-catalog
 
 /wait-for-it.sh localhost:25020 -t 120

@@ -128,6 +128,8 @@ if [[ $SP_HDFS_NFS_GATEWAY -eq "yes" ]]; then
     echo -e "---------------------------------------"
 
     supervisorctl start rpcbind
+    /wait-for-it.sh localhost:111 -t 120
+    sleep 5
 
     supervisorctl start hdfs-nfs-gateway
 
