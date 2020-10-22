@@ -1,4 +1,4 @@
-FROM seqpipe/seqpipe-impala-base:CDH6.3.2
+FROM seqpipe/seqpipe-impala-base:CDH6.3.2udf
 
 USER root
 
@@ -13,7 +13,16 @@ ADD ./supervisor/supervisord.conf /etc/
 
 ADD ./bin/supervisord-bootstrap.sh /
 ADD ./bin/wait-for-it.sh /
+
+ADD ./udafs/build_udafs.sh /
+ADD ./udafs/create_udafs.sh /
+ADD ./udafs/upload_udafs_to_hdfs.sh /
+ADD ./udafs/udaf_create_queries /
+
 RUN chmod +x /*.sh
+
+RUN /build_udafs.sh
+
 
 VOLUME ["/data"]
 

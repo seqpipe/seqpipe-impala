@@ -1,4 +1,4 @@
-FROM seqpipe/seqpipe-cdh-base:CDH6.3.2
+FROM seqpipe/seqpipe-cdh-base:CDH6.3.2udf
 
 USER root
 
@@ -8,6 +8,10 @@ RUN DEBIAN_FRONTEND=noninteractive \
         impala-shell \
         impala-catalog \
         impala-state-store
+
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get install -y g++ cmake libboost-dev impala-udf-dev
+
 
 RUN usermod -a -G supergroup impala; \
     usermod -a -G hdfs impala; \

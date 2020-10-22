@@ -3,14 +3,19 @@ FROM amd64/ubuntu:18.04
 USER root
 
 ENV CDH_VERSION 6.3.2
+ENV TZ UTC
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update --fix-missing && \
     apt-get -y dist-upgrade
 
+RUN DEBIAN_FRONTEND=noninteractive \
+    apt-get update --fix-missing && \
+    apt-get -y dist-upgrade
 
 RUN DEBIAN_FRONTEND=noninteractive \
-	apt-get install -y wget gnupg2 supervisor less vim \
+	apt-get install -y git wget gnupg2 supervisor less vim \
     inetutils-ping telnet net-tools apt-utils \
     openjdk-8-jdk-headless \
     ldap-auth-client nscd \

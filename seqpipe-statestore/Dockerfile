@@ -1,4 +1,4 @@
-FROM seqpipe/seqpipe-impala-base:CDH6.3.2
+FROM seqpipe/seqpipe-impala-base:CDH6.3.2udf
 
 USER root
 

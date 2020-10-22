@@ -133,4 +133,14 @@ if [[ $SP_HDFS_NFS_GATEWAY -eq "yes" ]]; then
 
     supervisorctl start hdfs-nfs-gateway
 
+    sleep 5
+    echo -e "\n--------------------------------------------"
+    echo -e "      Creating UDAFs..."
+    echo -e "--------------------------------------------"
+
+    /upload_udafs_to_hdfs.sh
+    sleep 5
+
+    /create_udafs.sh
+
 fi
