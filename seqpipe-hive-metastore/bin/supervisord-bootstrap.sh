@@ -12,6 +12,11 @@ sed -i \
 sed -i \
     "s/SP_NAMENODE/${SP_NAMENODE}/g" /fix_default_location.sql
 
+
+chmod a+r -R /etc/hadoop/conf
+chown postgres:postgres -R /etc/postgresql
+chmod a+r -R /etc/postgresql
+
 supervisorctl start postgresql
 
 /wait-for-it.sh localhost:5432 -t 120

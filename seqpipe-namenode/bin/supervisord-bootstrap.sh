@@ -9,6 +9,8 @@ sed -i \
 sed -i \
     "s/SP_REPLICATION/${SP_REPLICATION}/g" /etc/hadoop/conf/hdfs-site.xml
 
+chmod a+r -R /etc/hadoop/
+
 mkdir -p /data/dn/
 chown hdfs:hadoop -R /data/dn
 

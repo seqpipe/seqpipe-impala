@@ -24,6 +24,8 @@ sed -i \
 sed -i \
     "s/SP_IMPALA_CATALOG/${SP_IMPALA_CATALOG}/g" /etc/default/impala
 
+chmod a+r -R /etc/hadoop
+chmod a+r -R /etc/impala/
 
 /wait-for-it.sh ${SP_HIVEMETASTORE}:9083 -t 360
 

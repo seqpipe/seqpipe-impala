@@ -25,6 +25,8 @@ sed -i \
 sed -i \
     "s/SP_IMPALA_CATALOG/${SP_IMPALA_CATALOG}/g" /etc/default/impala
 
+chmod a+r -R /etc/hadoop
+chmod a+r -R /etc/impala/
 
 mkdir -p /data/dn/
 chown hdfs:hadoop -R /data/dn
